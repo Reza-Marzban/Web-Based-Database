@@ -1,0 +1,73 @@
+<html>
+<head>
+<style>
+#footer {
+    bottom: 0px;
+    background-color:  #4CAF50;
+    width: 100%;
+    text-align: center;
+}
+.button {
+  display: inline-block;
+  padding: 15px 25px;
+  font-size: 24px;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  outline: none;
+  color: #fff;
+  background-color: #4CAF50;
+  border: none;
+  border-radius: 15px;
+  box-shadow: 0 9px #999;
+}
+
+.button:hover {background-color: #3e8e41}
+
+.button:active {
+  background-color: #3e8e41;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
+
+#customers {
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+#customers td, #customers th {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+#customers tr:nth-child(even){background-color: #f2f2f2;}
+
+#customers tr:hover {background-color: #ddd;}
+
+#customers th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #4CAF50;
+    color: white;
+}
+</style>
+</head>
+<body>
+<br>
+<h1>Employee List:</h1>
+<table id="customers">
+<tr><th>Employee Number</th><th>Name</th><th>Department Name</th><th>Hiring Date</th><th>Date of Birth</th><th>Sex</th><th>Manager</th></tr>
+{% for emp in employees%}
+<tr><td>{{ emp.EmployeeNumber}}</td><td>{{ emp.Name}}</td><td>{{ emp.DepartmentNo.DepartmentName}}</td><td>{{ emp.HiringDate}}</td><td>{{ emp.DateofBirth}}</td><td>{{ emp.Sex}}</td><td>{{ emp.ManagerID.Name}}</td></tr>
+{% endfor %}
+</table>
+<hr>
+<center><br><a href="{% url 'base' %}"><button class="button">Home Page</button></a><br><br></center>
+<br><div id="footer"><b>
+    &copy; All rights reserved. Reza Marzban
+</b>
+</div>
+<body>
+</html>

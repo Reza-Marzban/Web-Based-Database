@@ -1,0 +1,92 @@
+<html>
+<head>
+<style>
+#footer {
+    bottom: 0px;
+    background-color:  #4CAF50;
+    width: 100%;
+    text-align: center;
+}
+.button {
+  display: inline-block;
+  padding: 15px 25px;
+  font-size: 24px;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  outline: none;
+  color: #fff;
+  background-color: #4CAF50;
+  border: none;
+  border-radius: 15px;
+  box-shadow: 0 9px #999;
+}
+
+.button:hover {background-color: #3e8e41}
+
+.button:active {
+  background-color: #3e8e41;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
+
+#customers {
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+#customers td, #customers th {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+#customers tr:nth-child(even){background-color: #f2f2f2;}
+
+#customers tr:hover {background-color: #ddd;}
+
+#customers th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #4CAF50;
+    color: white;
+}
+</style>
+</head>
+<body>
+<br>
+<h1>Accepted Candidate List:</h1>
+<table id="customers">
+<tr><th>Accepted Candidate ID</th><th>Name</th><th>Experiens (years)</th><th>Skills</th><th>SSN</th></tr>
+{% for can in candidates%}
+<tr><td>{{ can.AccCandidateID }}</td><td>{{ can.CandidateID.Name}}</td><td>{{ can.CandidateID.YearsExperirence}}</td><td>{{ can.CandidateID.Skills}}</td><td>{{ can.SSNID.SSN}}</td></tr>
+{% endfor %}
+</table>
+<hr>
+<h1>Assign to a Department:</h1>
+<p>Enter the Candiate ID and a Department Number to assign.</p>
+<form method="POST">{% csrf_token %}
+Accepted candidate ID:<br>
+<input type="text" name="ID"><br>
+Manager Employee ID (Enter 0 if the manager is not specified):<br>
+<input type="text" name="MID"><br>
+Department Number (101,102,103):<br>
+<input type="text" name="Department"><br>
+<button type="submit" class="save btn btn-default">Submit</button>
+</form>
+<br>
+<h1>Department Info:</h1>
+<table id="customers">
+<tr><th>DepartmentName</th><th>DepartmentNumber</th></tr>
+<tr><td>Marketing</td><td>101</td></tr>
+<tr><td>HR Management</td><td>102</td></tr>
+<tr><td>Production/Engineering</td><td>103</td></tr>
+</table>
+<center><br><a href="{% url 'base' %}"><button class="button">Home Page</button></a><br><br></center>
+<br><div id="footer"><b>
+    &copy; All rights reserved. Reza Marzban
+</b>
+</div>
+<body>
+</html>

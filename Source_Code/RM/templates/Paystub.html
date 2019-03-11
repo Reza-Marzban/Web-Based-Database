@@ -1,0 +1,109 @@
+<html>
+<head>
+<style>
+#footer {
+    bottom: 0px;
+    background-color:  #4CAF50;
+    width: 100%;
+    text-align: center;
+}
+.button {
+  display: inline-block;
+  padding: 15px 25px;
+  font-size: 24px;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  outline: none;
+  color: #fff;
+  background-color: #4CAF50;
+  border: none;
+  border-radius: 15px;
+  box-shadow: 0 9px #999;
+}
+
+.button:hover {background-color: #3e8e41}
+
+.button:active {
+  background-color: #3e8e41;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
+
+#customers {
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 49.9%;
+    float:left;
+}
+
+#customers td, #customers th {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+#customers tr:nth-child(even){background-color: #f2f2f2;}
+
+#customers tr:hover {background-color: #ddd;}
+
+#customers th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #4CAF50;
+    color: white;
+}
+</style>
+</head>
+<body>
+<br>
+<h1>PayStub</h1>
+<h2>The monthly salary paystub </h2>
+<h3>Paystub information:</h3>
+<p>Employee number:<b> {{ s1.EmployeeNumber.EmployeeNumber}}</b> &nbsp; &nbsp; Employee Name:<b> {{ s1.EmployeeNumber.Name}}</b> &nbsp; &nbsp; &nbsp; Month:<b> {{ s1.Month }}</b>	&nbsp; Year:<b> {{ s1.Year }}</b> .
+</p>
+<table>
+<tr>
+<td width="1700px">
+<h3>Salary Units List:</h3><center>
+</td>
+</tr>
+<tr align="right">
+<td width="1700px" align="right">
+<table id="customers">
+<tr><th colspan="2">Income</th></tr>
+<tr><th>Description</th><th>Amount</th></tr>
+{% for i in incomes%}
+<tr><td>{{ i.description }}</td><td style="text-align:right">{{ i.amount}}</td></tr>
+{% endfor %}
+<tr><td><h3>Income Total:</h3></td><td style="text-align:right"><h3>{{ IncomeT}}</h3></td></tr>
+</table>
+
+<table id="customers" style="float:right;">
+<tr><th colspan="2">Deduction</th></tr>
+<tr><th>Description</th><th>Amount</th></tr>
+{% for i in deductions%}
+<tr><td>{{ i.description }}</td><td style="text-align:right">{{ i.amount}}</td></tr>
+{% endfor %}
+<tr><td><h3>Deduction Total:</h3></td><td style="text-align:right"><h3>{{ DeductionT}}</h3></td></tr>
+</table>
+<table id="customers" style="width: 100%;">
+<tr><td style="width: 50%;"><h2 style="text-align:right">Total:</h2></td><td style="text-align:right"><h2>{{ T }}</h2></td></tr>
+</table></center>
+</td>
+</tr>
+</table>
+<p>&nbsp</p>
+<center>
+<hr>
+<p>&nbsp</p>
+<a href="/AddIncome/?s1={{ s1.SalaryId}}"><button class="button">Adding a Income Salary unit</button></a>
+<a href="/AddDeduction/?s1={{ s1.SalaryId}}"><button class="button">Adding a Deduction Salary unit</button></a>
+</center><br><center>
+<br><a href="{% url 'base' %}"><button class="button">Home Page</button></a><br><br></center>
+<br><div id="footer"><b>
+    &copy; All rights reserved. Reza Marzban
+</b>
+</div>
+<body>
+</html>

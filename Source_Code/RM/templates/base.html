@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+#footer {
+    bottom: 0px;
+    background-color:  #4CAF50;
+    width: 100%;
+    text-align: center;
+}
+.button {
+  display: inline-block;
+  padding: 15px 25px;
+  font-size: 24px;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  outline: none;
+  color: #fff;
+  background-color: #4CAF50;
+  border: none;
+  border-radius: 15px;
+  box-shadow: 0 9px #999;
+}
+
+.button:hover {background-color: #3e8e41}
+
+.button:active {
+  background-color: #3e8e41;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
+</style>
+</head>
+<body>
+<center>
+<h2><b>CS 5423</b> - Database</h2>
+<h3>Web-Based Database - Part III </h3>
+<h2>Reza Marzban</h2>
+</center>
+<h3>Hiring:</h3>
+<a href="{% url 'insert_candidate' %}" target="_blank"><button class="button">Enter a Candidate</button></a>
+<a href="{% url 'candidate_list' %}" target="_blank"><button class="button">Candidates List</button></a>
+<a href="{% url 'ACCcandidate_list' %}" target="_blank"><button class="button">Accepted Candidates List</button></a>
+<br><br><br>
+<h3>Employees:</h3>
+<a href="{% url 'employee_list' %}" target="_blank"><button class="button">Current Employees List</button></a>
+<br><br><br>
+<h3>Pay-Stub:</h3>
+<a href="{% url 'PayStub' %}" target="_blank"><button class="button">Add/Edit/View Paystub</button></a>
+<br><br><br>
+<p>
+<hr>
+<h3>Help:</h3>
+<ul>
+  <li>In order to Accept a candidate, go to candidate list and enter the candidate number.</li>
+  <li>Accepted Employees can be assigned to a Department and a manager in Accepted Candidates list.</li>
+  <li>You can add, edit or view a pay stub.</li>
+</ul>
+</p>
+<br><div id="footer"><b>
+    &copy; All rights reserved. Reza Marzban
+</b>
+</div>
+</body>
+</html>

@@ -1,0 +1,84 @@
+<html>
+<head>
+<style>
+#footer {
+    bottom: 0px;
+    background-color:  #4CAF50;
+    width: 100%;
+    text-align: center;
+}
+.button {
+  display: inline-block;
+  padding: 15px 25px;
+  font-size: 24px;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  outline: none;
+  color: #fff;
+  background-color: #4CAF50;
+  border: none;
+  border-radius: 15px;
+  box-shadow: 0 9px #999;
+}
+
+.button:hover {background-color: #3e8e41}
+
+.button:active {
+  background-color: #3e8e41;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
+
+#customers {
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+#customers td, #customers th {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+#customers tr:nth-child(even){background-color: #f2f2f2;}
+
+#customers tr:hover {background-color: #ddd;}
+
+#customers th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #4CAF50;
+    color: white;
+}
+</style>
+</head>
+<body>
+<br>
+<h1>Candidate List:</h1>
+<table id="customers">
+<tr><th>Candidate ID</th><th>Name</th><th>Major</th><th>Last Degree</th><th>GPA</th><th>Date of Birth</th><th>Sex</th><th>Experiens (years)</th><th>Skills</th><th>Hired?</th></tr>
+{% for can in candidates%}
+<tr><td>{{ can.CandidateID }}</td><td>{{ can.Name}}</td><td>{{ can.Major}}</td><td>{{ can.LastDegree}}</td><td>{{ can.GPA}}</td><td>{{ can.DateofBirth}}</td><td>{{ can.Sex}}</td><td>{{ can.YearsExperirence}}</td><td>{{ can.Skills}}</td><td>{{ can.IsHired}}</td></tr>
+{% endfor %}
+</table>
+<hr>
+<h1>Delete/Hire a Candidate:</h1>
+<p>Enter the Candiate ID to hire them or delete them.</p>
+<form method="POST">{% csrf_token %}
+<select name="choose">
+  <option value="HIRE">Hire</option>
+  <option value="DELETE">Delete</option>
+</select>
+Candidate ID:<br>
+<input type="text" name="ID"><br>
+<button type="submit" class="save btn btn-default">Submit</button>
+</form>
+<center><br><a href="{% url 'base' %}"><button class="button">Home Page</button></a><br><br></center>
+<br><div id="footer"><b>
+    &copy; All rights reserved. Reza Marzban
+</b>
+</div>
+<body>
+</html>
